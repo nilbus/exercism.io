@@ -62,19 +62,6 @@ onDomReady = ->
     if confirm("Are you sure you want to dismiss invitation to #{username}?")
       dismissInvitation(username, slug)
 
-  $('#destroy_team').on 'click', ->
-    slug = $(@).data('team')
-
-    if confirm("Are you sure you want to delete " + slug + "?")
-      destroyTeam(slug)
-
-  $('#edit_team').on 'click', (event) ->
-    event.preventDefault()
-    toggleTeamEdit()
-
-  if _.any($('.comments'))
-    emojify.setConfig(emoticons_enabled: false)
-    emojify.run(document.getElementsByClassName("comments")[0])
 
 localStorageHasKey = (key) ->
   return localStorage.getItem(key) != null
@@ -94,14 +81,6 @@ initCommentMemory = () ->
   if localStorageHasKey(location.pathname)
     loadCommentFromStorage()
   recordText()
-
-destroyTeam = (slug) ->
-  href = "/teams/" + slug
-  form = $('<form method="post" action="' + href + '"></form>')
-  method_input = '<input name="_method" value="delete" type="hidden"/>'
-
-  form.hide().append(method_input).appendTo('body')
-  form.submit()
 
 dismissTeamMember = (username, slug) ->
   href = "/teams/#{slug}/members/#{username}"
