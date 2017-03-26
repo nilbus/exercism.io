@@ -6,6 +6,11 @@ if $flipper['have_another'] && $.support.pjax
   $.pjax.defaults.scrollTo = false
   $(document).on 'submit', 'form[data-pjax]', (event) ->
     $.pjax.submit(event, '.container[data-pjax]')
+  $(document).on 'blur', 'form[data-pjax] textarea.comment', (event) ->
+    commentField = $(event.target)
+    return if commentField.data('preloaded-next-entry')
+    commentField.data('preloaded-next-entry', true)
+    $.pjax(url: window.location.toString(), container: '.container[data-future-pjax]')
 
 $ -> onDomReady()
 $(document).on 'pjax:success', -> onDomReady()
