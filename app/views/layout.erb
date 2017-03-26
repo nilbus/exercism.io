@@ -39,6 +39,9 @@
         a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)
       }, 1);
     </script>
+    <script>
+      window.$flipper = <%= Hash[$flipper.features.map { |feature| [feature.name, feature.enabled?(current_user)] }].to_json %>
+    </script>
   </head>
   <body>
     <%= erb :"application/_navbar" %>
