@@ -72,11 +72,11 @@ localStorageHasKey = (key) ->
   return localStorage.getItem(key) != null
 
 loadCommentFromStorage = () ->
-  $('#submission_comment').val(localStorage.getItem(location.pathname))
+  $('.submission_comment').val(localStorage.getItem(location.pathname))
 
 recordText = () ->
   comment = localStorage.getItem(location.pathname)
-  $('#submission_comment').keyup (event) ->
+  $('.submission_comment').keyup (event) ->
     text = $(this).val()
     unless comment == text
       comment = text
@@ -139,8 +139,8 @@ class SubmissionPrompt
 
   initializeUI: ->
     @container.data 'submission-prompt-initialized', true
-    @container.find('.btn-answer-prompt').click ->
-      $('#submission_comment').focus()
+    @container.find('.btn-answer-prompt').click =>
+      @container.closest('.container').find('.submission_comment').focus()
     @container.find('.btn-new-prompt').click => @showNewPrompt()
     @showNewPrompt()
     @container.removeClass('hidden') # Leave hidden when JS not enabled

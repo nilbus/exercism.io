@@ -148,7 +148,7 @@ $(function() {
     $("#write_tab").find('a').trigger('click');
 
     // set reply
-    var submissionCommentTextArea = $('#submission_comment');
+    var submissionCommentTextArea = $('.submission_comment');
     submissionCommentTextArea.val(nitQuoted);
     submissionCommentTextArea.trigger('input');
     submissionCommentTextArea.focus();
