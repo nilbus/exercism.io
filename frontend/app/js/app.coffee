@@ -81,6 +81,7 @@ recordText = () ->
     unless comment == text
       comment = text
       localStorage.setItem(location.pathname, text)
+      $(this).data('value-saved', true)
 
 initCommentMemory = () ->
   if localStorageHasKey(location.pathname)

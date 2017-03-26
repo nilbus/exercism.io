@@ -62,7 +62,7 @@ $(function() {
       was_submitted = true;
     });
     window.onbeforeunload = function (e) {
-      var unsaved = $this.text() !== $this.val();
+      var unsaved = !$this.data('value-saved') && $this.text() !== $this.val();
       if(!was_submitted && unsaved) {
         // see http://stackoverflow.com/questions/10311341/confirmation-before-closing-of-tab-browser
         e = e || window.event;
