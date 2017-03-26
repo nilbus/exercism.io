@@ -1,6 +1,15 @@
 angular.module('exercism', ['ui.bootstrap'])
 
-$ ->
+if $flipper['have_another'] && $.support.pjax
+  $.pjax.defaults.fragment = '.container[data-pjax]'
+  $.pjax.defaults.push = false
+  $.pjax.defaults.scrollTo = false
+  $(document).on 'submit', 'form[data-pjax]', (event) ->
+    $.pjax.submit(event, '.container[data-pjax]')
+
+$ -> onDomReady()
+$(document).on 'pjax:success', -> onDomReady()
+onDomReady = ->
   if location.pathname != '/' && $('h1, h2, h3').length && document.title == 'exercism.io'
     document.title = "#{$($('h1, h2, h3').get(0)).text()} - exercism.io"
 

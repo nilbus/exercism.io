@@ -1,7 +1,7 @@
 <% if current_user.guest? %>
   <p> You're not logged in right now. Please login via <a href="/login">GitHub </a> to comment </p>
 <% else %>
-  <form accept-charset="UTF-8" action="/submissions/<%= submission.key %>/nitpick" method="POST">
+  <form accept-charset="UTF-8" action="/submissions/<%= submission.key %>/nitpick" method="POST"<%= ' data-pjax' if $flipper[:have_another] %>>
   <%= erb :"submissions/comment", locals: { submission: submission } %>
     <button type="submit" class="pull-right btn btn-primary btn-lg" name="nitpick">
       Submit Comment

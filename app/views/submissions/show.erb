@@ -1,4 +1,4 @@
-<div class="container" id="submission">
+<div class="container" id="submission"<%= ' data-pjax' if $flipper[:have_another] %>>
   <div class="submission-header page-header">
     <h1 class="pull-left">
       <%= track_icon(submission.track_id, 40) %>
