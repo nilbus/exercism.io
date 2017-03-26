@@ -39,7 +39,7 @@ onDomReady = ->
       error: (xhr) ->
         console.log("Failed to mark notice as cleared: #{xhr.responseText}")
 
-  $("#current_submission").theiaStickySidebar(additionalMarginTop: 70)
+  $(".current_submission").theiaStickySidebar(additionalMarginTop: 70)
 
   $('.manager_delete').on 'click', ->
     username = $(@).data('username')
