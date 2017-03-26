@@ -1,7 +1,9 @@
 //TODO move all variable declaration to the tops of functions.
 var submissionViewLayout;
 
-$(function() {
+$(function() { onDomReady(); });
+$(document).on('pjax:success', function() { onDomReady(); });
+function onDomReady() {
   $(".pending-submission, .work").each(function(index,element) {
     var elem = $(element);
 
@@ -153,8 +155,8 @@ $(function() {
     submissionCommentTextArea.trigger('input');
     submissionCommentTextArea.focus();
   });
+}
 
-});
 
 // color change on hover for SVG logo in navbar
 var hoverSVG = function(fill) {
