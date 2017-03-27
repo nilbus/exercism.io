@@ -21,6 +21,10 @@
         <div class="list-group">
           <% locals[:comment_history].each do |comment| %>
             <button type="button" class="list-group-item history_item">
+              <label class='pull-right'>
+                <input type="checkbox" class="history-star hidden" <%= 'checked' if false && comment.starred? %>>
+                <i class="fa <%= "fa-star#{'-o' unless false && comment.starred?}" %>"></i>
+              </label>
               <%= comment.body %>
             </button>
           <% end %>
