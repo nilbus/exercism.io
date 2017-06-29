@@ -10,7 +10,7 @@ module ExercismWeb
       unless dismissed?
         <<~HTML
           <span class='client-outdated' data-username='#{user.username}'>
-            A new version of the exercism client is available (cli-2.4.0).
+            A new version of the exercism client is available (cli-2.5.0).
             Run <code>exercism upgrade</code> to get the latest hotness!
           </span>
         HTML
