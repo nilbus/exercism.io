@@ -9,3 +9,4 @@ COPY Gemfile Gemfile.lock /exercism/
 WORKDIR /exercism
 
 RUN bundle install
+COPY . /exercism
